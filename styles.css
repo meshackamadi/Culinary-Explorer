@@ -1,0 +1,76 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f8faf8;
+  color: #1f2937;
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+.intro {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.search label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.search-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-row input {
+  flex: 1;
+  padding: 0.6rem;
+}
+
+.search-row button {
+  padding: 0.6rem 1rem;
+  border: 0;
+  border-radius: 4px;
+  background: #166534;
+  color: #fff;
+  cursor: pointer;
+}
+
+.results-message {
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.results {
+  display: grid;
+  gap: 1rem;
+}
+
+.recipe-card {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.recipe-card h2 {
+  margin-top: 0;
+}
+
+.recipe-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
