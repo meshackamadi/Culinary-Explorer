@@ -1,0 +1,12 @@
+(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var e=[{id:`chicken-spinach-skillet`,title:`Chicken and Spinach Skillet`,ingredients:[`chicken`,`spinach`,`garlic`,`olive oil`],nutrition:{calories:410,protein:38,carbs:8,fat:24,fiber:3}},{id:`lentil-tomato-stew`,title:`Lentil Tomato Stew`,ingredients:[`lentils`,`tomato`,`onion`,`carrot`],nutrition:{calories:330,protein:18,carbs:49,fat:7,fiber:14}},{id:`spinach-chickpea-curry`,title:`Spinach Chickpea Curry`,ingredients:[`spinach`,`chickpeas`,`coconut milk`,`onion`],nutrition:{calories:360,protein:13,carbs:39,fat:18,fiber:10}},{id:`garlic-lemon-salmon`,title:`Garlic Lemon Salmon`,ingredients:[`salmon`,`garlic`,`lemon`,`olive oil`],nutrition:{calories:420,protein:34,carbs:4,fat:29,fiber:1}}];function t(t){let n=t.trim().toLowerCase();return n?e.filter(e=>e.ingredients.some(e=>e.toLowerCase().includes(n))):[]}var n=document.getElementById(`ingredient-form`),r=document.getElementById(`ingredient-input`),i=document.getElementById(`results-message`),a=document.getElementById(`results`);function o(e,t){a.innerHTML=``,t.trim()?e.length?(i.textContent=`Found ${e.length} recipe${e.length===1?``:`s`} for "${t}".`,e.forEach(e=>{let t=document.createElement(`article`);t.className=`recipe-card`,t.innerHTML=`
+      <h2>${e.title}</h2>
+      <p><strong>Ingredients:</strong> ${e.ingredients.join(`, `)}</p>
+      <h3>Nutrition (per serving)</h3>
+      <ul>
+        <li>Calories: ${e.nutrition.calories} kcal</li>
+        <li>Protein: ${e.nutrition.protein} g</li>
+        <li>Carbs: ${e.nutrition.carbs} g</li>
+        <li>Fat: ${e.nutrition.fat} g</li>
+        <li>Fiber: ${e.nutrition.fiber} g</li>
+      </ul>
+    `,a.appendChild(t)})):i.textContent=`No recipes found for "${t}".`:i.textContent=`Enter an ingredient to discover matching recipes.`}n.addEventListener(`submit`,e=>{e.preventDefault();let n=r.value;o(t(n),n)}),o([],``);

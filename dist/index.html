@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Culinary Explorer</title>
+    <script type="module" crossorigin src="/assets/main-CxkgNKh3.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-CTsEV3lJ.css">
+  </head>
+  <body>
+    <main class="app">
+      <h1>Culinary Explorer</h1>
+      <p class="intro">
+        Search recipes by ingredients you already have and instantly view nutrition before you cook.
+      </p>
+
+      <form id="ingredient-form" class="search" autocomplete="off">
+        <label for="ingredient-input">Main ingredient</label>
+        <div class="search-row">
+          <input id="ingredient-input" name="ingredient" placeholder="Try chicken, lentils, spinach..." />
+          <button type="submit">Find Recipes</button>
+        </div>
+      </form>
+
+      <p id="results-message" class="results-message" aria-live="polite"></p>
+      <section id="results" class="results" aria-label="Recipe results"></section>
+    </main>
+
+  </body>
+</html>
