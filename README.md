@@ -10,4 +10,7 @@ Culinary Explorer is a lightweight web app that helps home cooks discover recipe
 
 ## Run locally
 
-Open `/home/runner/work/Culinary-Explorer/Culinary-Explorer/index.html` in a browser.
+From `/home/runner/work/Culinary-Explorer/Culinary-Explorer`:
+
+1. `npm start` (or `npm run dev`)
+2. Open `http://localhost:3000`
