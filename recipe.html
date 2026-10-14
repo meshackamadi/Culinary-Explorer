@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe — Culinary Explorer</title>
+    <meta name="description" content="Full recipe details with ingredients, instructions, and nutritional analysis." />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="page-wrap">
+
+    <!-- ── Navigation ── -->
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="./index.html" class="nav-brand">
+          <span class="brand-icon">🍳</span>
+          Culinary <span>Explorer</span>
+        </a>
+        <div class="nav-links">
+          <a href="./index.html" class="nav-link" id="nav-home">
+            <span>🔍</span><span>Search</span>
+          </a>
+          <a href="./favorites.html" class="nav-link" id="nav-favs">
+            <span>♥</span><span>Favourites</span>
+            <span class="nav-fav-count" aria-live="polite"></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="detail-page" id="detail-root">
+        <!-- Rendered by recipeDetail.js -->
+        <div id="detail-content"></div>
+      </div>
+    </main>
+
+    <div class="toast-container" aria-live="assertive"></div>
+    <script type="module" src="./src/recipeDetail.js"></script>
+  </body>
+</html>

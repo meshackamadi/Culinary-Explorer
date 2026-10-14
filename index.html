@@ -3,27 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Culinary Explorer</title>
+    <title>Culinary Explorer — Search Recipes by Ingredient</title>
+    <meta name="description" content="Search thousands of recipes by ingredient. View full nutrition analysis, save favourites, and explore cuisines from around the world." />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <main class="app">
-      <h1>Culinary Explorer</h1>
-      <p class="intro">
-        Search recipes by ingredients you already have and instantly view nutrition before you cook.
-      </p>
+  <body class="page-wrap">
 
-      <form id="ingredient-form" class="search" autocomplete="off">
-        <label for="ingredient-input">Main ingredient</label>
-        <div class="search-row">
-          <input id="ingredient-input" name="ingredient" placeholder="Try chicken, lentils, spinach..." />
-          <button type="submit">Find Recipes</button>
+    <!-- ── Navigation ── -->
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="./index.html" class="nav-brand">
+          <span class="brand-icon">🍳</span>
+          Culinary <span>Explorer</span>
+        </a>
+        <div class="nav-links">
+          <a href="./index.html" class="nav-link active" id="nav-home">
+            <span>🔍</span><span>Search</span>
+          </a>
+          <a href="./favorites.html" class="nav-link" id="nav-favs">
+            <span>♥</span><span>Favourites</span>
+            <span class="nav-fav-count" aria-live="polite"></span>
+          </a>
         </div>
-      </form>
+      </div>
+    </nav>
 
-      <p id="results-message" class="results-message" aria-live="polite"></p>
-      <section id="results" class="results" aria-label="Recipe results"></section>
+    <main>
+      <!-- ── Hero Search ── -->
+      <section class="hero" aria-label="Recipe search">
+        <div class="hero-eyebrow">✨ Powered by TheMealDB</div>
+        <h1 class="hero-title">
+          Find recipes with<br><em>what you have</em>
+        </h1>
+        <p class="hero-sub">Search thousands of recipes by ingredient. View full nutrition &amp; save favourites.</p>
+
+        <form id="search-form" autocomplete="off" role="search">
+          <label for="ingredient-input" class="sr-only">Main ingredient</label>
+          <div class="search-bar">
+            <input
+              id="ingredient-input"
+              name="q"
+              type="search"
+              placeholder="Try chicken, pasta, spinach…"
+              aria-label="Search by ingredient"
+              autocomplete="off"
+            />
+            <button type="submit" class="btn-search" id="search-btn">
+              <span>🔍</span> Find Recipes
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ── Filters Bar ── -->
+      <section class="filters-section" aria-label="Filters and sorting" id="filters-section" hidden>
+        <div class="filters-inner">
+          <span class="filters-label">Refine:</span>
+
+          <!-- Mobile toggle -->
+          <button class="btn-filter-toggle" id="filter-toggle-btn" aria-expanded="false" aria-controls="filters-bar-body">
+            <span>⚙</span> Filters
+          </button>
+
+          <div class="filters-bar-body" id="filters-bar-body">
+            <select class="filter-select" id="filter-category" aria-label="Filter by category">
+              <option value="">All Categories</option>
+            </select>
+
+            <select class="filter-select" id="filter-area" aria-label="Filter by cuisine">
+              <option value="">All Cuisines</option>
+            </select>
+
+            <select class="filter-select" id="sort-select" aria-label="Sort results">
+              <option value="">Sort: Default</option>
+              <option value="az">Name A → Z</option>
+              <option value="za">Name Z → A</option>
+            </select>
+
+            <div class="filters-actions">
+              <button class="btn-clear-filters" id="clear-filters-btn" aria-label="Clear all filters">
+                ✕ Clear
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Results ── -->
+      <section class="results-section" aria-label="Recipe results">
+        <div class="results-meta" id="results-meta" hidden>
+          <p class="results-count" id="results-count" aria-live="polite"></p>
+        </div>
+        <div class="results-grid" id="results-grid" aria-live="polite" aria-label="Recipe cards"></div>
+        <div id="empty-state" class="empty-state" hidden>
+          <div class="empty-icon">🍽️</div>
+          <h2 id="empty-title">No recipes found</h2>
+          <p id="empty-msg">Try a different ingredient or clear your filters.</p>
+        </div>
+      </section>
     </main>
+
+    <!-- ── Toast container ── -->
+    <div class="toast-container" aria-live="assertive"></div>
 
     <script type="module" src="./app.js"></script>
   </body>

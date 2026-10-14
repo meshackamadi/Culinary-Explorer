@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Favourites — Culinary Explorer</title>
+    <meta name="description" content="Your saved favourite recipes in Culinary Explorer." />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="page-wrap">
+
+    <!-- ── Navigation ── -->
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="./index.html" class="nav-brand">
+          <span class="brand-icon">🍳</span>
+          Culinary <span>Explorer</span>
+        </a>
+        <div class="nav-links">
+          <a href="./index.html" class="nav-link" id="nav-home">
+            <span>🔍</span><span>Search</span>
+          </a>
+          <a href="./favorites.html" class="nav-link active" id="nav-favs">
+            <span>♥</span><span>Favourites</span>
+            <span class="nav-fav-count" aria-live="polite"></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="favs-page">
+        <header class="favs-header">
+          <h1 class="favs-title">❤️ My Favourites</h1>
+          <p class="favs-sub" id="favs-sub"></p>
+        </header>
+        <div id="favs-grid" aria-live="polite" aria-label="Saved favourite recipes"></div>
+      </div>
+    </main>
+
+    <div class="toast-container" aria-live="assertive"></div>
+    <script type="module" src="./src/favoritesPage.js"></script>
+  </body>
+</html>
