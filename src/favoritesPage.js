@@ -6,6 +6,8 @@
 import { getFavorites, removeFavorite, getFavoriteCount } from './favorites.js';
 import { updateNavBadge, showToast } from './ui.js';
 
+const APP_BASE = import.meta.env?.BASE_URL || './';
+
 const grid = document.getElementById('favs-grid');
 const sub  = document.getElementById('favs-sub');
 
@@ -68,7 +70,7 @@ function cardHTML(fav) {
         <p class="saved-at">Saved ${savedDate}</p>
       </div>
       <div class="card-actions" style="gap:.5rem;flex-wrap:wrap">
-        <a href="./recipe.html?id=${esc(fav.idMeal)}" class="btn-view" style="flex:1">
+        <a href="${APP_BASE}recipe.html?id=${encodeURIComponent(fav.idMeal)}" class="btn-view" style="flex:1">
           View Recipe →
         </a>
         <button

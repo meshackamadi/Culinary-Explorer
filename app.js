@@ -7,6 +7,8 @@
 import { isFavorite, toggleFavorite, getFavoriteCount } from './src/favorites.js';
 import { updateNavBadge, showToast, renderSkeletonCards } from './src/ui.js';
 
+const APP_BASE = import.meta.env?.BASE_URL || './';
+
 /* ── Element refs ─────────────────────────────── */
 const form          = document.getElementById('search-form');
 const input         = document.getElementById('ingredient-input');
@@ -158,7 +160,7 @@ function renderResults(meals) {
         </div>
       </div>
       <div class="card-actions">
-        <a href="./recipe.html?id=${meal.idMeal}" class="btn-view" aria-label="View ${esc(meal.strMeal)} recipe">
+        <a href="${APP_BASE}recipe.html?id=${encodeURIComponent(meal.idMeal)}" class="btn-view" aria-label="View ${esc(meal.strMeal)} recipe">
           View Recipe →
         </a>
       </div>`;
