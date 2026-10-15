@@ -12,7 +12,9 @@
 const CACHE_PREFIX = 'ce-nut-';
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 const API_BASE     = 'https://api.calorieninjas.com/v1/nutrition';
-const API_KEY      = import.meta.env.VITE_CALORIE_NINJAS_KEY || '';
+// import.meta.env is injected by Vite, but may be absent when Pages serves
+// source modules directly. The nutrition estimator works without a key.
+const API_KEY      = import.meta.env?.VITE_CALORIE_NINJAS_KEY || '';
 
 /* ── Cache helpers ───────────────────────────── */
 
