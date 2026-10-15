@@ -10,4 +10,21 @@ Culinary Explorer is a lightweight web app that helps home cooks discover recipe
 
 ## Run locally
 
-Open `/home/runner/work/Culinary-Explorer/Culinary-Explorer/index.html` in a browser.
+```bash
+npm install
+npm run dev
+```
+
+Nutrition works out of the box with a local estimate. To enable the optional
+CalorieNinjas result source, copy `.env.sample` to `.env` and set
+`VITE_CALORIE_NINJAS_KEY`. The app falls back to the local estimate when the
+service is unavailable, rate-limited, or not configured.
+
+## Build and deploy
+
+```bash
+npm run build
+```
+
+The included GitHub Actions workflow deploys the `dist` folder to GitHub Pages
+on pushes to `main`. No API secret is required for the default deploy path.

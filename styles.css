@@ -47,6 +47,10 @@ img  { display: block; max-width: 100%; }
 a    { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 button { font-family: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
 ul, ol { list-style: none; padding: 0; }
 
 /* Screen-reader only utility */
@@ -401,6 +405,11 @@ main { flex: 1; }
   display: flex; align-items: center; justify-content: space-between; gap: .5rem;
 }
 .panel-title { font-size: .95rem; font-weight: 700; display: flex; align-items: center; gap: .5rem; }
+.nutrition-source {
+  margin-left: auto; color: var(--accent); background: var(--accent-dim);
+  border: 1px solid rgba(249,115,22,.25); border-radius: 99px;
+  padding: .15rem .45rem; font-size: .68rem; font-weight: 600;
+}
 .panel-body { padding: 1.25rem; }
 
 /* Ingredients panel */
@@ -594,3 +603,12 @@ main { flex: 1; }
 }
 @keyframes toastIn  { from { opacity: 0; transform: translateY(12px); } }
 @keyframes toastOut { to   { opacity: 0; transform: translateY(-8px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

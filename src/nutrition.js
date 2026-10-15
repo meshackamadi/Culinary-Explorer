@@ -16,10 +16,12 @@ export async function renderNutritionPanel(container, ingredients) {
   if (!container) return;
 
   // Show skeleton
+  container.setAttribute('aria-busy', 'true');
   container.innerHTML = skeletonHTML();
 
   if (!ingredients || ingredients.length === 0) {
     container.innerHTML = errorHTML('No ingredients to analyse.', false);
+    container.setAttribute('aria-busy', 'false');
     return;
   }
 
@@ -30,9 +32,11 @@ export async function renderNutritionPanel(container, ingredients) {
     try {
       const data = await fetchNutrition(query);
       container.innerHTML = panelHTML(data);
+      container.setAttribute('aria-busy', 'false');
       attachBreakdownToggle(container);
     } catch (err) {
       container.innerHTML = errorHTML(friendlyMessage(err), err.code !== 'NO_KEY');
+      container.setAttribute('aria-busy', 'false');
 
       // Wire retry button
       container.querySelector('#nut-retry-btn')?.addEventListener('click', doFetch);
@@ -64,7 +68,7 @@ function skeletonHTML() {
     </div>`;
 }
 
-function panelHTML({ items, totals }) {
+function panelHTML({ items, totals, source = 'api' }) {
   const total = totals.protein_g + totals.carbs_g + totals.fat_g || 1;
   const pPct  = ((totals.protein_g / total) * 100).toFixed(1);
   const cPct  = ((totals.carbs_g   / total) * 100).toFixed(1);
@@ -73,6 +77,7 @@ function panelHTML({ items, totals }) {
   return `
     <div class="panel-header">
       <span class="panel-title">🔬 Nutrition Analysis</span>
+      ${source === 'estimate' ? '<span class="nutrition-source">Estimated</span>' : ''}
     </div>
     <div class="panel-body nutrition-panel">
       <div class="macros-bar" title="Protein / Carbs / Fat">
@@ -120,7 +125,7 @@ function panelHTML({ items, totals }) {
           </div>`).join('')}
       </div>` : ''}
 
-      <p class="nut-disclaimer">ℹ️ Nutrition estimates are approximate and based on ingredient quantities.</p>
+      <p class="nut-disclaimer">ℹ️ ${source === 'estimate' ? 'Estimated from typical ingredient values.' : 'Nutrition estimates are approximate and based on ingredient quantities.'}</p>
     </div>`;
 }
 

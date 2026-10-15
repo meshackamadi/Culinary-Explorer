@@ -125,7 +125,7 @@ function renderDetail(meal, ingredients) {
         </div>
 
         <!-- Nutrition panel (populated async) -->
-        <div class="panel" id="nutrition-panel" aria-label="Nutritional analysis" aria-live="polite">
+        <div class="panel" id="nutrition-panel" aria-label="Nutritional analysis" aria-live="polite" aria-busy="true">
           <!-- Filled by renderNutritionPanel() -->
         </div>
 
